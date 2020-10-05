@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +32,7 @@ namespace TrendsHairShop
             services.AddDbContext<TrendsHairDbContext>(opts => opts.UseMySql
             (Configuration.GetConnectionString("DefaultConnection")));
 
-            
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<TrendsHairDbContext>();
 
             services.AddScoped<IHairRepository, HairRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -48,6 +49,7 @@ namespace TrendsHairShop
                 services.AddTransient -- gives a new instance each time you ask for one*/
                 
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             
         }
@@ -71,6 +73,7 @@ namespace TrendsHairShop
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

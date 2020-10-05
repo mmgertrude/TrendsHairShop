@@ -19,8 +19,8 @@ namespace TrendsHairShop.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("TrendsHairShopIdentityDbContextConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<TrendsHairShopIdentityDbContext>();
+               // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                   // .AddEntityFrameworkStores<TrendsHairShopIdentityDbContext>();
             });
         }
     }

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using TrendsHairShop.Models;
 
 namespace TrendsHairShop
@@ -27,7 +28,7 @@ namespace TrendsHairShop
             /*whenever a class requires any of these times ie IHair and ICategoryRepository,
             they will implemented automatically by the built in dependency injection */
             
-            services.AddDbContext<TrendsHairDbContext>(opts => opts.UseMySQL
+            services.AddDbContext<TrendsHairDbContext>(opts => opts.UseMySql
             (Configuration.GetConnectionString("DefaultConnection")));
 
             

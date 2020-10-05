@@ -67,6 +67,7 @@ namespace TrendsHairShop
             app.UseSession();
             app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
